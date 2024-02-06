@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов»
 
-* Студент: [Владимир Ильин](https://up.htmlacademy.ru/univer-js3/4/user/2346641).
-* Наставник: `Неизвестно`.
+- Студент: [Владимир Ильин](https://up.htmlacademy.ru/univer-js3/4/user/2346641).
+- Наставник: [Глеб Клецков](https://htmlacademy.ru/profile/id1487865).
 
 ---
 
