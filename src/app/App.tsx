@@ -1,24 +1,28 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { cards } from '../mock/mock';
 import { Favourites } from '../pages/Favourites';
 import { Login } from '../pages/Login';
 import { Main } from '../pages/Main';
 import { Offer } from '../pages/Offer';
 import { Layout } from './Layout';
-import { ProtectedRoute } from '../components/protected-route';
+import { ProtectedRoute } from '../components/ProtectedRoute';
+import { offers } from '../mocks/offers';
+import { ScrollToTop } from '../components';
 
 export const App = () => (
   <BrowserRouter>
+    <ScrollToTop />
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Main cards={cards} />} />
+        <Route index element={<Main offers={offers} />} />
         <Route path="offer/:id" element={<Offer />} />
       </Route>
       <Route
         path="/favourites"
         element={
           <ProtectedRoute user={{}}>
-            <Favourites />
+            <Favourites
+              items={{ Amsterdam: offers.slice(0, 2), Cologne: [offers[2]] }}
+            />
           </ProtectedRoute>
         }
       />

@@ -1,10 +1,34 @@
-export type Place = {
+export type OfferHousehold = 'apartment' | 'room' | 'house' | 'hotel';
+
+export type Person = {
   id: string;
+  avatar: string;
   name: string;
-  type: 'apartment' | 'room';
-  preview: string;
+  isPro: boolean;
+};
+
+export type Offer = {
+  id: string;
+  previews: string[];
+  title: string;
+  city: string;
+  description?: string[];
+  isPremium: boolean;
+  type: OfferHousehold;
+  rating: number;
+  numberOfBedrooms: number;
+  maxGuests: number;
   valuePerNight: number;
-  rating: 1 | 2 | 3 | 4 | 5;
-  isPremium?: boolean;
+  owner: Person;
   isBookmarked?: boolean;
+  insideItems?: string[];
+  reviews: Review[];
+};
+
+export type Review = {
+  id: string;
+  author: Person;
+  rating: number;
+  date: Date;
+  text: string;
 };

@@ -1,12 +1,12 @@
 import { FC } from 'react';
-import { PlaceCard } from '../../components/place-card';
-import type { Place } from '../../types';
+import type { Offer } from '../../types';
+import { OfferList } from '../../components/OfferList';
 
 export interface MainPageProps {
-  cards?: Place[];
+  offers?: Offer[];
 }
 
-export const Main: FC<MainPageProps> = ({ cards }) => (
+export const Main: FC<MainPageProps> = ({ offers }) => (
   <div className="page page--gray page--main">
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
@@ -77,12 +77,7 @@ export const Main: FC<MainPageProps> = ({ cards }) => (
                 </li>
               </ul>
             </form>
-            <div className="cities__places-list places__list tabs__content">
-              {cards &&
-                cards.map((card) => (
-                  <PlaceCard key={`card-${card.id}`} {...card} />
-                ))}
-            </div>
+            <OfferList offers={offers} />
           </section>
           <div className="cities__right-section">
             <section className="cities__map map"></section>

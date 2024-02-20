@@ -1,12 +1,13 @@
 import { FC } from 'react';
-import type { Place } from '../types';
+import type { Offer } from '../types';
+import { capitalize } from '../utils/utils';
+import { Link } from 'react-router-dom';
 
-type PlaceCardProps = Place;
-
-export const PlaceCard: FC<PlaceCardProps> = ({
-  name,
+export const OfferCard: FC<Offer> = ({
+  id,
+  title,
   type,
-  preview,
+  previews,
   valuePerNight,
   rating,
   isPremium = false,
@@ -22,7 +23,7 @@ export const PlaceCard: FC<PlaceCardProps> = ({
       <a href="#">
         <img
           className="place-card__image"
-          src={preview}
+          src={previews[0]}
           width="260"
           height="200"
           alt="Place image"
@@ -56,11 +57,9 @@ export const PlaceCard: FC<PlaceCardProps> = ({
         </div>
       </div>
       <h2 className="place-card__name">
-        <a href="#">{name}</a>
+        <Link to={`/offer/${id}`}>{title}</Link>
       </h2>
-      <p className="place-card__type">
-        {type[0].toUpperCase() + type.slice(1)}
-      </p>
+      <p className="place-card__type">{capitalize(type)}</p>
     </div>
   </article>
 );
