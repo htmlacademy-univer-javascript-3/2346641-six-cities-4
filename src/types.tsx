@@ -1,4 +1,5 @@
 export type Place = {
+  id: string;
   name: string;
   type: 'apartment' | 'room';
   preview: string;
