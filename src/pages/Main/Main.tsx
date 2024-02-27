@@ -1,6 +1,10 @@
 import { FC } from 'react';
-import type { Offer } from '../../types';
-import { OfferList } from '../../components/OfferList';
+
+import type { Offer } from '../../entities';
+
+import { OfferList } from '../../widgets';
+
+import { Page } from '../../shared/ui';
 
 export interface MainPageProps {
   offers?: Offer[];
@@ -8,7 +12,7 @@ export interface MainPageProps {
 
 export const Main: FC<MainPageProps> = ({ offers }) => (
   <div className="page page--gray page--main">
-    <main className="page__main page__main--index">
+    <Page name="index">
       <h1 className="visually-hidden">Cities</h1>
       <div className="tabs">
         <section className="locations container">
@@ -84,6 +88,6 @@ export const Main: FC<MainPageProps> = ({ offers }) => (
           </div>
         </div>
       </div>
-    </main>
+    </Page>
   </div>
 );

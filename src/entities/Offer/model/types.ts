@@ -1,11 +1,6 @@
-export type OfferHousehold = 'apartment' | 'room' | 'house' | 'hotel';
+import type { Person, Review } from '../..';
 
-export type Person = {
-  id: string;
-  avatar: string;
-  name: string;
-  isPro: boolean;
-};
+export type OfferHousehold = 'apartment' | 'room' | 'house' | 'hotel';
 
 export type Offer = {
   id: string;
@@ -23,12 +18,4 @@ export type Offer = {
   isBookmarked?: boolean;
   insideItems?: string[];
   reviews: Review[];
-};
-
-export type Review = {
-  id: string;
-  author: Person;
-  rating: number;
-  date: Date;
-  text: string;
 };

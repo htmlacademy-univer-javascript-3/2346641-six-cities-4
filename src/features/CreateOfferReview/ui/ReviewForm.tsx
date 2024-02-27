@@ -1,10 +1,10 @@
 import { ChangeEvent, FC, MouseEventHandler, useState } from 'react';
 
-type CommentFormProps = {
+type ReviewFormProps = {
   offerId: string;
 };
 
-export const CommentForm: FC<CommentFormProps> = ({ offerId }) => {
+export const ReviewForm: FC<ReviewFormProps> = ({ offerId }) => {
   const [rating, setRating] = useState(0);
   const [text, setText] = useState('');
 

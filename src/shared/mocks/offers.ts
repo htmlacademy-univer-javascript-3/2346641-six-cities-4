@@ -1,8 +1,7 @@
-import { Offer } from '../types';
 import { people } from './people';
 import { reviews } from './reviews';
 
-export const offers: Offer[] = [
+export const offers = [
   {
     id: '1',
     title: 'Beautiful & luxurious apartment at great location',
