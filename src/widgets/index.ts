@@ -7,3 +7,4 @@ export { OfferReviews } from './OfferReviews/OfferReviews';
 export { OfferHost } from './OfferHost/OfferHost';
 export { OfferMap } from './OfferMap/OfferMap';
 export { OfferDetails } from './OfferDetails/OfferDetails';
+export { CitiesMap } from './CitiesMap/ui/CitiesMap';

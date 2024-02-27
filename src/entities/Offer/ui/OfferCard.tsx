@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, MouseEventHandler } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import type { Offer } from '../..';
@@ -10,9 +10,16 @@ import { AddToBookmarksButton } from '../../../features';
 type OfferCardProps = {
   className?: string;
   offer: Offer;
+  onMouseEnter?: MouseEventHandler<HTMLElement>;
+  onMouseLeave?: MouseEventHandler<HTMLElement>;
 };
 
-export const OfferCard: FC<OfferCardProps> = ({ className, offer }) => {
+export const OfferCard: FC<OfferCardProps> = ({
+  className,
+  offer,
+  onMouseEnter,
+  onMouseLeave,
+}) => {
   const navigate = useNavigate();
 
   const onCardTitleClick = () => navigate(`/offer/${offer.id}`);
@@ -27,7 +34,9 @@ export const OfferCard: FC<OfferCardProps> = ({ className, offer }) => {
       rating={offer.rating}
       mark={offer.isPremium ? 'Premium' : ''}
       preview={{ src: offer.previews[0], alt: 'Place image' }}
-      onTitleClick={onCardTitleClick}
+      onClick={onCardTitleClick}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
       extraSlotContent={
         <AddToBookmarksButton
           className="place-card"

@@ -39,6 +39,10 @@ export const offers = [
       'An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.',
     ],
     reviews: [reviews[0]],
+    coords: {
+      latitude: 52.3909553943508,
+      longitude: 4.85309666406198,
+    },
   },
   {
     id: '2',
@@ -54,6 +58,10 @@ export const offers = [
     owner: people[0],
     city: 'Amsterdam',
     reviews: [reviews[0]],
+    coords: {
+      latitude: 52.3609553943508,
+      longitude: 4.85309666406198,
+    },
   },
   {
     id: '3',
@@ -69,6 +77,10 @@ export const offers = [
     owner: people[0],
     city: 'Amsterdam',
     reviews: [reviews[0]],
+    coords: {
+      latitude: 52.3909553943508,
+      longitude: 4.929309666406198,
+    },
   },
   {
     id: '4',
@@ -84,6 +96,10 @@ export const offers = [
     owner: people[0],
     city: 'Amsterdam',
     reviews: [reviews[0]],
+    coords: {
+      latitude: 52.3809553943508,
+      longitude: 4.939309666406198,
+    },
   },
   {
     id: '5',
@@ -99,5 +115,9 @@ export const offers = [
     owner: people[0],
     city: 'Amsterdam',
     reviews: [reviews[0]],
+    coords: {
+      latitude: 52.3709553943508,
+      longitude: 4.939309666406198,
+    },
   },
 ];

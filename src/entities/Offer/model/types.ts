@@ -18,4 +18,8 @@ export type Offer = {
   isBookmarked?: boolean;
   insideItems?: string[];
   reviews: Review[];
+  coords: {
+    latitude: number;
+    longitude: number;
+  };
 };

@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import { FC, MouseEventHandler, ReactNode } from 'react';
 
 import { Rating } from '..';
 
@@ -12,9 +12,12 @@ type CardProps = {
     src: string;
     alt: string;
   };
-  onTitleClick?: VoidFunction;
+  onClick?: VoidFunction;
   extraSlotContent?: ReactNode;
   className?: string;
+
+  onMouseEnter?: MouseEventHandler<HTMLElement>;
+  onMouseLeave?: MouseEventHandler<HTMLElement>;
 };
 
 export const Card: FC<CardProps> = ({
@@ -24,12 +27,18 @@ export const Card: FC<CardProps> = ({
   rating,
   mark,
   preview,
-  onTitleClick,
+  onClick,
   extraSlotContent,
   className,
+  onMouseEnter,
+  onMouseLeave,
 }) => {
   return (
-    <article className={`${className}__card place-card`}>
+    <article
+      className={`${className}__card place-card`}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
       {mark && (
         <div className="place-card__mark">
           <span>{mark}</span>
@@ -38,16 +47,15 @@ export const Card: FC<CardProps> = ({
       {preview && (
         <div
           className={`${className}__image-wrapper place-card__image-wrapper`}
+          onClick={onClick}
         >
-          <a href="#">
-            <img
-              className="place-card__image"
-              src={preview.src}
-              width="260"
-              height="200"
-              alt={preview.alt}
-            />
-          </a>
+          <img
+            className="place-card__image"
+            src={preview.src}
+            width="260"
+            height="200"
+            alt={preview.alt}
+          />
         </div>
       )}
       <div className="place-card__info">
@@ -59,7 +67,7 @@ export const Card: FC<CardProps> = ({
           {extraSlotContent}
         </div>
         <Rating className="place-card" rating={rating} />
-        <h2 className="place-card__name" onClick={onTitleClick}>
+        <h2 className="place-card__name" onClick={onClick}>
           {title}
         </h2>
         <p className="place-card__type">{footnote}</p>
