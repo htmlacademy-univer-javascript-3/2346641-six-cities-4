@@ -1,22 +1,31 @@
 import { useEffect, useState, MutableRefObject, useRef } from 'react';
-import { Map, Marker, TileLayer, layerGroup, Icon } from 'leaflet';
+import {
+  Map,
+  Marker,
+  TileLayer,
+  layerGroup,
+  Icon,
+  type PointTuple,
+} from 'leaflet';
 
-const URL_MARKER_DEFAULT =
-  'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg';
+const MARKET_BASE_URL =
+  'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map';
 
-const URL_MARKER_CURRENT =
-  'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/main-pin.svg';
+const MARKER_URL_DEFAULT = MARKET_BASE_URL + '/pin.svg';
+const MARKER_URL_CURRENT = MARKET_BASE_URL + '/main-pin.svg';
+const MARKER_ICON_SIZE: PointTuple = [40, 40];
+const MARKER_ICON_ANCHOR: PointTuple = [20, 20];
 
 const mapCustomIcons = {
   default: new Icon({
-    iconUrl: URL_MARKER_DEFAULT,
-    iconSize: [40, 40],
-    iconAnchor: [20, 40],
+    iconUrl: MARKER_URL_DEFAULT,
+    iconSize: MARKER_ICON_SIZE,
+    iconAnchor: MARKER_ICON_ANCHOR,
   }),
   current: new Icon({
-    iconUrl: URL_MARKER_CURRENT,
-    iconSize: [40, 40],
-    iconAnchor: [20, 20],
+    iconUrl: MARKER_URL_CURRENT,
+    iconSize: MARKER_ICON_SIZE,
+    iconAnchor: MARKER_ICON_ANCHOR,
   }),
 };
 
@@ -30,7 +39,7 @@ export const useMap = (
   const isRenderedRef = useRef<boolean>(false);
 
   useEffect(() => {
-    if (mapRef.current !== null && !isRenderedRef.current) {
+    if (mapRef.current && !isRenderedRef.current) {
       const instance = new Map(mapRef.current, {
         center: {
           lat: city.latitude,

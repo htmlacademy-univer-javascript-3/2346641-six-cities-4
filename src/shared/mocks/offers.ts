@@ -1,7 +1,8 @@
+import { Offer } from '../../entities';
 import { people } from './people';
 import { reviews } from './reviews';
 
-export const offers = [
+export const offers: Offer[] = [
   {
     id: '1',
     title: 'Beautiful & luxurious apartment at great location',

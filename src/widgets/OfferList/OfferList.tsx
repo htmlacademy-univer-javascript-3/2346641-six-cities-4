@@ -21,12 +21,8 @@ export const OfferList: FC<OfferListProps> = ({
             className="cities"
             offer={offer}
             key={offer.id}
-            onMouseEnter={() =>
-              onListItemMouseEnter && onListItemMouseEnter(offer.id)
-            }
-            onMouseLeave={() =>
-              onListItemMouseLeave && onListItemMouseLeave(offer.id)
-            }
+            onMouseEnter={() => onListItemMouseEnter?.(offer.id)}
+            onMouseLeave={() => onListItemMouseLeave?.(offer.id)}
           />
         ))}
     </div>
