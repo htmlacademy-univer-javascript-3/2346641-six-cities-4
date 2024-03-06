@@ -22,4 +22,6 @@ export type Offer = {
     latitude: number;
     longitude: number;
   };
+
+  nearPlaces: Offer[];
 };

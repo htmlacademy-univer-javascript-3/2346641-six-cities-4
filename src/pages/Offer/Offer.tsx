@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { offers } from '../../shared/mocks';
 import { Page } from '../../shared/ui';
 
-import { type Offer as OfferType, OfferGallery } from '../../entities';
+import { OfferGallery } from '../../entities';
 
 import {
   NearPlaces,
@@ -15,7 +15,7 @@ import {
 
 export const Offer = () => {
   const { id } = useParams();
-  const offer = (offers as OfferType[])[Number(id) - 1];
+  const offer = offers[Number(id) - 1];
 
   return (
     <Page name="offer">
@@ -28,9 +28,9 @@ export const Offer = () => {
             <OfferReviews offerId={offer.id} />
           </div>
         </div>
-        <OfferMap />
+        <OfferMap offer={offer} />
       </section>
-      <NearPlaces initialPlaceId={offer.id} />
+      <NearPlaces nearPlaces={offer.nearPlaces} />
     </Page>
   );
 };
