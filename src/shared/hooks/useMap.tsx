@@ -85,7 +85,7 @@ export const useMap = (
 
         marker
           .setIcon(
-            selectedPoint !== undefined && point.id === selectedPoint.id
+            selectedPoint && point.id === selectedPoint.id
               ? mapCustomIcons.current
               : mapCustomIcons.default
           )

@@ -38,7 +38,7 @@ export const Main: FC<MainPageProps> = ({ offers }) => {
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">
-                312 places to stay in {currentCity.title}
+                {offers?.length} places to stay in {currentCity.title}
               </b>
               <SortOffersForm />
               <OfferList
