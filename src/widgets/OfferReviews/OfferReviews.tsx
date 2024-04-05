@@ -1,10 +1,8 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 
-import { reviews } from '../../shared/mocks';
-
-import { ReviewComment, type Review } from '../../entities';
-
-import { CreateOfferReviewForm } from '../../features';
+import { ReviewComment, type Review } from 'entities';
+import { CreateOfferReviewForm } from 'features';
+import { reviews } from 'shared/mocks';
 
 type OfferReviewsProps = {
   offerId: string;
@@ -29,3 +27,5 @@ export const OfferReviews: FC<OfferReviewsProps> = ({ offerId }) => {
     </section>
   );
 };
+
+OfferReviews.displayName = 'OfferReviews';

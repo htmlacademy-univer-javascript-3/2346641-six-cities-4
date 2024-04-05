@@ -1,4 +1,4 @@
-import type { Person } from '../..';
+import type { Person } from 'entities';
 
 export type Review = {
   id: string;

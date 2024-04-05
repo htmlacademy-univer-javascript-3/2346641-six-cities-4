@@ -1,16 +1,17 @@
-import { useEffect, useState, MutableRefObject, useRef } from 'react';
+import { useEffect, useRef, useState, type MutableRefObject } from 'react';
+
 import {
+  Icon,
   Map,
   Marker,
   TileLayer,
   layerGroup,
-  Icon,
   type PointTuple,
 } from 'leaflet';
 
 const MARKET_BASE_URL =
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map';
-
+const DEFAULT_ZOOM = 12;
 const MARKER_URL_DEFAULT = MARKET_BASE_URL + '/pin.svg';
 const MARKER_URL_CURRENT = MARKET_BASE_URL + '/main-pin.svg';
 const MARKER_ICON_SIZE: PointTuple = [40, 40];
@@ -38,6 +39,7 @@ export const useMap = (
   const [map, setMap] = useState<Map | null>(null);
   const isRenderedRef = useRef<boolean>(false);
 
+  // Initializes map
   useEffect(() => {
     if (mapRef.current && !isRenderedRef.current) {
       const instance = new Map(mapRef.current, {
@@ -45,7 +47,7 @@ export const useMap = (
           lat: city.latitude,
           lng: city.longitude,
         },
-        zoom: 12,
+        zoom: DEFAULT_ZOOM,
       });
 
       const layer = new TileLayer(
@@ -62,6 +64,15 @@ export const useMap = (
       isRenderedRef.current = true;
     }
   }, [mapRef, city]);
+
+  // Adds city change animation
+  useEffect(() => {
+    if (map) {
+      map.flyTo([city.latitude, city.longitude], DEFAULT_ZOOM, {
+        duration: 2,
+      });
+    }
+  }, [map, city]);
 
   useEffect(() => {
     if (map) {

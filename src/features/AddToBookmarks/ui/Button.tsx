@@ -1,5 +1,6 @@
-import { FC } from 'react';
-import { Icon } from '../../../shared/ui';
+import type { FC } from 'react';
+
+import { Icon } from 'shared/ui';
 
 type ButtonProps = {
   checked?: boolean;

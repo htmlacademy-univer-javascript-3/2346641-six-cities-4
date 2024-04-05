@@ -1,4 +1,4 @@
-import type { Person, Review } from '../..';
+import type { Person, Review } from 'entities';
 
 export type OfferHousehold = 'apartment' | 'room' | 'house' | 'hotel';
 

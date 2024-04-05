@@ -1,10 +1,11 @@
+export { CityMap } from './CityMap/CityMap';
+export { CityTabs } from './CityTabs/CityTabs';
 export { FavouritesFooter } from './FavouritesFooter/FavouritesFooter';
 export { FavouritesPlaceholder } from './FavouritesPlaceholder/FavouritesPlaceholder';
 export { Header } from './Header/Header';
-export { OfferList } from './OfferList/OfferList';
 export { NearPlaces } from './NearPlaces/NearPlaces';
-export { OfferReviews } from './OfferReviews/OfferReviews';
-export { OfferHost } from './OfferHost/OfferHost';
-export { OfferMap } from './OfferMap/OfferMap';
 export { OfferDetails } from './OfferDetails/OfferDetails';
-export { CitiesMap } from './CitiesMap/ui/CitiesMap';
+export { OfferHost } from './OfferHost/OfferHost';
+export { OfferList } from './OfferList/OfferList';
+export { OfferMap } from './OfferMap/OfferMap';
+export { OfferReviews } from './OfferReviews/OfferReviews';

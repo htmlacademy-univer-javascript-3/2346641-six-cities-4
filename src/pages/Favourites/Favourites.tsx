@@ -1,12 +1,12 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-import { capitalize } from '../../shared/lib';
-import { Page } from '../../shared/ui';
+import { capitalize } from 'shared/lib';
+import { Page } from 'shared/ui';
 
-import type { Offer } from '../../entities';
+import type { Offer } from 'entities';
 
-import { FavouritesFooter, FavouritesPlaceholder } from '../../widgets';
+import { FavouritesFooter, FavouritesPlaceholder } from 'widgets';
 
 type FavouritesProps = {
   items?: Record<string, Offer[]>;

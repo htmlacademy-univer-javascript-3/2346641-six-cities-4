@@ -1,6 +1,6 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 
-import { type Offer, OfferCard } from '../../entities';
+import { OfferCard, type Offer } from 'entities';
 
 type NearPlacesProps = {
   nearPlaces: Offer[];
@@ -28,3 +28,5 @@ export const NearPlaces: FC<NearPlacesProps> = ({ nearPlaces }) => {
     </div>
   );
 };
+
+NearPlaces.displayName = 'NearPlaces';

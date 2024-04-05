@@ -1,6 +1,6 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 
-import { Person } from '../../entities';
+import type { Person } from 'entities';
 
 type OfferHostProps = {
   host: Person;
@@ -40,3 +40,5 @@ export const OfferHost: FC<OfferHostProps> = ({ host, descriptions }) => {
     </div>
   );
 };
+
+OfferHost.displayName = 'OfferHost';

@@ -1,4 +1,6 @@
-export const FavouritesPlaceholder = () => (
+import type { FC } from 'react';
+
+export const FavouritesPlaceholder: FC = () => (
   <section className="favorites favorites--empty">
     <h1 className="visually-hidden">Favorites (empty)</h1>
     <div className="favorites__status-wrapper">
@@ -9,3 +11,5 @@ export const FavouritesPlaceholder = () => (
     </div>
   </section>
 );
+
+FavouritesPlaceholder.displayName = 'FavouritesPlaceholder';

@@ -1,8 +1,8 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 
-import { Comment } from '../../../shared/ui';
+import type { Review } from '../model/types';
 
-import type { Review } from '../..';
+import { Comment } from 'shared/ui';
 
 type ReviewCommentProps = {
   review: Review;

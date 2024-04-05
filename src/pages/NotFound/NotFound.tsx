@@ -1,4 +1,4 @@
-import { Page } from '../../shared/ui';
+import { Page } from 'shared/ui';
 
 export const NotFound = () => {
   return (

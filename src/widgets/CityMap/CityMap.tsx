@@ -1,20 +1,15 @@
-import { FC, useRef } from 'react';
-import 'leaflet/dist/leaflet.css';
+import { useRef, type FC } from 'react';
 
-import type { City, Offer, Point } from '../../../entities';
-import { useMap } from '../../../shared/hooks';
+import type { City, Offer, Point } from 'entities';
+import { useMap } from 'shared/hooks';
 
-type CitiesMapProps = {
+type CityMapProps = {
   city: City;
   offers: Offer[];
   selectedPoint?: Point;
 };
 
-export const CitiesMap: FC<CitiesMapProps> = ({
-  city,
-  offers,
-  selectedPoint,
-}) => {
+export const CityMap: FC<CityMapProps> = ({ city, offers, selectedPoint }) => {
   const points: Point[] = offers.map((offer) => ({
     id: offer.id,
     latitude: offer.coords.latitude,
@@ -27,3 +22,5 @@ export const CitiesMap: FC<CitiesMapProps> = ({
 
   return <section className="cities__map map" ref={mapRef} />;
 };
+
+CityMap.displayName = 'CityMap';

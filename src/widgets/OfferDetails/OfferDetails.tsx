@@ -1,11 +1,9 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 
-import { capitalize } from '../../shared/lib';
-import { Rating } from '../../shared/ui';
-
-import type { Offer } from '../../entities';
-
-import { AddToBookmarksButton } from '../../features';
+import type { Offer } from 'entities';
+import { AddToBookmarksButton } from 'features';
+import { capitalize } from 'shared/lib';
+import { Rating } from 'shared/ui';
 
 type OfferDetailsProps = {
   offer: Offer;
@@ -65,3 +63,5 @@ export const OfferDetails: FC<OfferDetailsProps> = ({ offer }) => {
     </>
   );
 };
+
+OfferDetails.displayName = 'OfferDetails';
