@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 
 type RatingProps = {
   rating: number;
@@ -15,3 +15,5 @@ export const Rating: FC<RatingProps> = ({ rating, className }) => {
     </div>
   );
 };
+
+Rating.displayName = 'Rating';

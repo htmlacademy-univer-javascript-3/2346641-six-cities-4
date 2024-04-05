@@ -1,11 +1,10 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
-import { offers } from '../../shared/mocks';
-
-import { FavouritesPage, MainPage, NotFoundPage, OfferPage } from '../../pages';
-
 import { Layout } from './Layout';
 import { ProtectedRoute } from './ProtectedRoute';
+
+import { FavouritesPage, MainPage, NotFoundPage, OfferPage } from 'pages';
+import { offers } from 'shared/mocks';
 
 const router = createBrowserRouter([
   {

@@ -1,4 +1,4 @@
-import { FC, MouseEventHandler, ReactNode } from 'react';
+import type { FC, MouseEventHandler, ReactNode } from 'react';
 
 import { Rating } from '..';
 
@@ -75,3 +75,5 @@ export const Card: FC<CardProps> = ({
     </article>
   );
 };
+
+Card.displayName = 'Card';

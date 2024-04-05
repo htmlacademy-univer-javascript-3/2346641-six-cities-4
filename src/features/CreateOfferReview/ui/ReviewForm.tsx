@@ -1,26 +1,37 @@
-import { ChangeEvent, FC, MouseEventHandler, useState } from 'react';
+import {
+  useState,
+  type ChangeEvent,
+  type FC,
+  type MouseEventHandler,
+} from 'react';
+
+type ReviewFormData = {
+  rating: number;
+  text: string;
+};
 
 type ReviewFormProps = {
   offerId: string;
 };
 
 export const ReviewForm: FC<ReviewFormProps> = ({ offerId }) => {
-  const [rating, setRating] = useState(0);
-  const [text, setText] = useState('');
+  const [formData, setFormData] = useState<ReviewFormData>({
+    rating: 0,
+    text: '',
+  });
 
   const onRatingInput = (e: ChangeEvent<HTMLInputElement>) => {
-    setRating(+e.target.value);
+    setFormData({ ...formData, rating: +e.target.value });
   };
 
   const onTextChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    setText(e.target.value);
+    setFormData({ ...formData, text: e.target.value });
   };
 
   const onSubmitButtonClick: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
     console.log(offerId);
-    console.log(rating);
-    console.log(text);
+    console.log(formData);
   };
 
   return (
@@ -136,7 +147,7 @@ export const ReviewForm: FC<ReviewFormProps> = ({ offerId }) => {
           className="reviews__submit form__submit button"
           type="submit"
           onClick={onSubmitButtonClick}
-          disabled={!text || rating === 0}
+          disabled={!formData.text || !formData.rating}
         >
           Submit
         </button>

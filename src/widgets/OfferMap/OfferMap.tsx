@@ -1,6 +1,7 @@
-import { FC, useRef } from 'react';
-import { type Point, type Offer } from '../../entities';
-import { useMap } from '../../shared/hooks';
+import { useRef, type FC } from 'react';
+
+import { type Offer, type Point } from 'entities';
+import { useMap } from 'shared/hooks';
 
 type OfferMapProps = {
   offer: Offer;
@@ -19,3 +20,5 @@ export const OfferMap: FC<OfferMapProps> = ({ offer }) => {
 
   return <section className="offer__map map" ref={mapRef}></section>;
 };
+
+OfferMap.displayName = 'OfferMap';

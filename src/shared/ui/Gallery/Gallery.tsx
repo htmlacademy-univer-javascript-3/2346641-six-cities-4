@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 
 type GalleryProps = {
   images: string[];
@@ -17,3 +17,5 @@ export const Gallery: FC<GalleryProps> = ({ images }) => {
     </div>
   );
 };
+
+Gallery.displayName = 'Gallery';

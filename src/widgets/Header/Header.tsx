@@ -1,4 +1,6 @@
-export const Header = () => {
+import type { FC } from 'react';
+
+export const Header: FC = () => {
   return (
     <header className="header">
       <div className="container">
@@ -40,3 +42,5 @@ export const Header = () => {
     </header>
   );
 };
+
+Header.displayName = 'Header';

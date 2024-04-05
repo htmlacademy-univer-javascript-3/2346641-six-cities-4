@@ -1,9 +1,10 @@
+import type { FC } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { offers } from '../../shared/mocks';
-import { Page } from '../../shared/ui';
+import { offers } from 'shared/mocks';
+import { Page } from 'shared/ui';
 
-import { OfferGallery } from '../../entities';
+import { OfferGallery } from 'entities';
 
 import {
   NearPlaces,
@@ -11,9 +12,9 @@ import {
   OfferHost,
   OfferMap,
   OfferReviews,
-} from '../../widgets';
+} from 'widgets';
 
-export const Offer = () => {
+export const Offer: FC = () => {
   const { id } = useParams();
   const offer = offers[Number(id) - 1];
 
@@ -34,3 +35,5 @@ export const Offer = () => {
     </Page>
   );
 };
+
+Offer.displayName = 'OfferPage';

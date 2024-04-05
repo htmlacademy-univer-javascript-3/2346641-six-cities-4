@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 
 import { getHTMLDateTime, getMonthYear } from '../../lib';
 
@@ -43,3 +43,5 @@ export const Comment: FC<CommentProps> = ({
     </li>
   );
 };
+
+Comment.displayName = 'Comment';

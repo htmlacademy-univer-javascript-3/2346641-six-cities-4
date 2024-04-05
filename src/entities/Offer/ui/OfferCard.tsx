@@ -1,11 +1,11 @@
-import { FC, MouseEventHandler } from 'react';
+import type { FC, MouseEventHandler } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import type { Offer } from '../..';
+import type { Offer } from '../model/types';
 
-import { Card } from '../../../shared/ui';
-import { capitalize } from '../../../shared/lib';
-import { AddToBookmarksButton } from '../../../features';
+import { AddToBookmarksButton } from 'features';
+import { capitalize } from 'shared/lib';
+import { Card } from 'shared/ui';
 
 type OfferCardProps = {
   className?: string;

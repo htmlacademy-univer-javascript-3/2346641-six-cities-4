@@ -1,6 +1,6 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 
-import { OfferCard, type Offer } from '../../entities';
+import { OfferCard, type Offer } from 'entities';
 
 type OfferListProps = {
   offers?: Offer[];
@@ -13,6 +13,12 @@ export const OfferList: FC<OfferListProps> = ({
   onListItemMouseEnter,
   onListItemMouseLeave,
 }) => {
+  const handleItemMouseEnter = (offer: Offer) => () =>
+    onListItemMouseEnter?.(offer.id);
+
+  const handleItemMouseLeave = (offer: Offer) => () =>
+    onListItemMouseLeave?.(offer.id);
+
   return (
     <div className="cities__places-list places__list tabs__content">
       {offers &&
@@ -21,10 +27,12 @@ export const OfferList: FC<OfferListProps> = ({
             className="cities"
             offer={offer}
             key={offer.id}
-            onMouseEnter={() => onListItemMouseEnter?.(offer.id)}
-            onMouseLeave={() => onListItemMouseLeave?.(offer.id)}
+            onMouseEnter={handleItemMouseEnter(offer)}
+            onMouseLeave={handleItemMouseLeave(offer)}
           />
         ))}
     </div>
   );
 };
+
+OfferList.displayName = 'OfferList';
