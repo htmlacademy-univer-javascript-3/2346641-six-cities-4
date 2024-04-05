@@ -30,3 +30,7 @@ export const CITIES = [
     longitude: 6.770396034688684,
   },
 ];
+
+export const BASE_URL = 'https://14.design.htmlacademy.pro/six-cities';
+export const REQUEST_TIMEOUT = 5000;
+export const AUTH_TOKEN_KEY = 'six-cities-token';

@@ -1,6 +1,7 @@
 import { useState, type FC } from 'react';
 
 import type { Offer, Point } from 'entities';
+import { useGetOffersQuery } from 'entities/Offer';
 import { SortOffersForm } from 'features';
 import { useTypedSelector } from 'shared/hooks';
 import { Page } from 'shared/ui';
@@ -12,6 +13,7 @@ export interface MainPageProps {
 
 export const Main: FC<MainPageProps> = ({ offers }) => {
   const [selectedPoint, setSelectedPoint] = useState<Point | undefined>();
+  const { data } = useGetOffersQuery();
   const currentCity = useTypedSelector((state) => state.city);
 
   const handleListItemHover = (listItemId: string) => {
@@ -33,6 +35,7 @@ export const Main: FC<MainPageProps> = ({ offers }) => {
       <Page name="index">
         <h1 className="visually-hidden">Cities</h1>
         <CityTabs />
+        {JSON.stringify(data)}
         <div className="cities">
           <div className="cities__places-container container">
             <section className="cities__places places">
