@@ -2,6 +2,7 @@ import type { BaseQueryApi, BaseQueryFn } from '@reduxjs/toolkit/query';
 import type { AxiosRequestConfig, RawAxiosRequestHeaders } from 'axios';
 import Axios from 'axios';
 import { getAxiosClient } from './HttpService';
+import { TokenService } from './TokenService';
 
 export interface AxiosBaseQueryArgs<Meta, Response = unknown> {
   meta?: Meta;
@@ -45,9 +46,12 @@ export const axiosBaseQuery = <
       const requestConfig = getRequestConfig(args);
       const result = await getAxiosClient()({
         ...requestConfig,
-        headers: prepareHeaders
-          ? prepareHeaders(requestConfig.headers || {}, api)
-          : requestConfig.headers,
+        headers: {
+          ...(prepareHeaders
+            ? prepareHeaders(requestConfig.headers || {}, api)
+            : requestConfig.headers),
+          'x-token': TokenService.get(),
+        },
         signal: api.signal,
         ...extraOptions,
       });

@@ -1,4 +1,4 @@
-import type { City, SixCities } from 'entities';
+import type { City, Person, SixCities } from 'entities';
 import type { Location } from 'shared/types';
 
 export type OfferHousehold = 'apartment' | 'room' | 'house' | 'hotel';
@@ -22,11 +22,7 @@ export type ExtendedOffer = BaseOffer & {
   description: string;
   bedrooms: number;
   goods: string[];
-  host: {
-    name: string;
-    avatarUrl: string;
-    isPro: boolean;
-  };
+  host: Person;
   images: string[];
   maxAdults: number;
 };
