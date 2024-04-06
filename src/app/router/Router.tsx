@@ -3,7 +3,13 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { Layout } from './Layout';
 import { ProtectedRoute } from './ProtectedRoute';
 
-import { FavouritesPage, MainPage, NotFoundPage, OfferPage } from 'pages';
+import {
+  FavouritesPage,
+  LoginPage,
+  MainPage,
+  NotFoundPage,
+  OfferPage,
+} from 'pages';
 
 const router = createBrowserRouter([
   {
@@ -21,12 +27,16 @@ const router = createBrowserRouter([
       {
         path: 'favourites',
         element: (
-          <ProtectedRoute user={{}}>
+          <ProtectedRoute>
             <FavouritesPage />
           </ProtectedRoute>
         ),
       },
     ],
+  },
+  {
+    path: '/login',
+    element: <LoginPage />,
   },
   {
     path: '*',
