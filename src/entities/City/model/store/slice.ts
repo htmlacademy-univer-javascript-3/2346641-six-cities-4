@@ -1,10 +1,10 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
 import type { City } from '../types';
 
 import { CITIES } from 'shared/const';
 
-const initialState: City = CITIES[0];
+const initialState: City = CITIES[0] as City;
 
 const citySlice = createSlice({
   name: 'city',

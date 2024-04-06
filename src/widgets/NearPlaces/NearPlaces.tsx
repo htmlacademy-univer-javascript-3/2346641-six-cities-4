@@ -1,9 +1,9 @@
 import type { FC } from 'react';
 
-import { OfferCard, type Offer } from 'entities';
+import { OfferCard, type OfferListItem } from 'entities';
 
 type NearPlacesProps = {
-  nearPlaces: Offer[];
+  nearPlaces: OfferListItem[];
 };
 
 export const NearPlaces: FC<NearPlacesProps> = ({ nearPlaces }) => {

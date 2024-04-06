@@ -1,13 +1,13 @@
 import type { FC } from 'react';
 
-import type { Offer } from '../model/types';
+import type { ExtendedOffer } from '../model/types';
 
 import { Gallery } from 'shared/ui';
 
 type OfferGalleryProps = {
-  offer: Offer;
+  offer: ExtendedOffer;
 };
 
 export const OfferGallery: FC<OfferGalleryProps> = ({ offer }) => {
-  return <Gallery images={offer.previews} />;
+  return <Gallery images={offer.images} />;
 };

@@ -9,9 +9,10 @@ import {
   type PointTuple,
 } from 'leaflet';
 
+import type { Location } from 'shared/types';
+
 const MARKET_BASE_URL =
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map';
-const DEFAULT_ZOOM = 12;
 const MARKER_URL_DEFAULT = MARKET_BASE_URL + '/pin.svg';
 const MARKER_URL_CURRENT = MARKET_BASE_URL + '/main-pin.svg';
 const MARKER_ICON_SIZE: PointTuple = [40, 40];
@@ -32,7 +33,7 @@ const mapCustomIcons = {
 
 export const useMap = (
   mapRef: MutableRefObject<HTMLElement | null>,
-  city: { latitude: number; longitude: number },
+  city: Location,
   points: { id: string; latitude: number; longitude: number }[],
   selectedPoint?: { id: string; latitude: number; longitude: number }
 ): Map | null => {
@@ -47,7 +48,7 @@ export const useMap = (
           lat: city.latitude,
           lng: city.longitude,
         },
-        zoom: DEFAULT_ZOOM,
+        zoom: city.zoom,
       });
 
       const layer = new TileLayer(
@@ -68,7 +69,7 @@ export const useMap = (
   // Adds city change animation
   useEffect(() => {
     if (map) {
-      map.flyTo([city.latitude, city.longitude], DEFAULT_ZOOM, {
+      map.flyTo([city.latitude, city.longitude], city.zoom, {
         duration: 2,
       });
     }

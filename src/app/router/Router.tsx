@@ -4,7 +4,6 @@ import { Layout } from './Layout';
 import { ProtectedRoute } from './ProtectedRoute';
 
 import { FavouritesPage, MainPage, NotFoundPage, OfferPage } from 'pages';
-import { offers } from 'shared/mocks';
 
 const router = createBrowserRouter([
   {
@@ -13,7 +12,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <MainPage offers={offers} />,
+        element: <MainPage />,
       },
       {
         path: 'offer/:id',
@@ -23,12 +22,7 @@ const router = createBrowserRouter([
         path: 'favourites',
         element: (
           <ProtectedRoute user={{}}>
-            <FavouritesPage
-              items={{
-                Amsterdam: offers.slice(0, 2),
-                Cologne: [offers[2]],
-              }}
-            />
+            <FavouritesPage />
           </ProtectedRoute>
         ),
       },

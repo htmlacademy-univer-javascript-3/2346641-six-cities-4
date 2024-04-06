@@ -2,6 +2,7 @@ import { useCallback, type FC } from 'react';
 
 import { CityTabItem } from './CityTabItem';
 
+import type { City } from 'entities';
 import { useCityActions } from 'entities/City';
 import { CITIES } from 'shared/const';
 import { useTypedSelector } from 'shared/hooks';
@@ -12,7 +13,7 @@ export const CityTabs: FC = () => {
 
   const handleTabItemClick = useCallback(
     (city: string) => {
-      const target = CITIES.find((c) => c.title === city)!;
+      const target = CITIES.find((c) => c.name === city)! as City;
       setCity(target);
     },
     [setCity]
@@ -25,8 +26,8 @@ export const CityTabs: FC = () => {
           {CITIES.map((city, index) => (
             <CityTabItem
               key={`${city}-${index}`}
-              title={city.title}
-              isActive={city.title === currentCity.title}
+              title={city.name}
+              isActive={city.name === currentCity.name}
               onClick={handleTabItemClick}
             />
           ))}

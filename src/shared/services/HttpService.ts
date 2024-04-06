@@ -20,28 +20,6 @@ const configure = () => {
 
     return config;
   });
-  _axios.interceptors.response.use(
-    (res) => {
-      return res;
-    },
-    async (err) => {
-      if (err.response.status >= 399) {
-        if (err.response.data) {
-          if (err.response.data.detail) {
-            // toast.error(err.response.data.detail);
-            return Promise.reject(err);
-          } else {
-            // toast.error(err.response.data);
-            return Promise.reject(err);
-          }
-        }
-        // toast.error("Unhandled backend error.");
-        return Promise.reject(err);
-      }
-
-      return Promise.reject(err);
-    }
-  );
 };
 
 export const getAxiosClient = () => _axios;
