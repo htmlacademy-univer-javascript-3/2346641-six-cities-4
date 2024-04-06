@@ -1,12 +1,12 @@
 import type { FC } from 'react';
 
-import type { Offer } from 'entities';
+import type { ExtendedOffer } from 'entities';
 import { AddToBookmarksButton } from 'features';
 import { capitalize } from 'shared/lib';
 import { Rating } from 'shared/ui';
 
 type OfferDetailsProps = {
-  offer: Offer;
+  offer: ExtendedOffer;
 };
 
 export const OfferDetails: FC<OfferDetailsProps> = ({ offer }) => {
@@ -23,7 +23,7 @@ export const OfferDetails: FC<OfferDetailsProps> = ({ offer }) => {
         <h1 className="offer__name">{offer.title}</h1>
         <AddToBookmarksButton
           className="offer"
-          checked={offer.isBookmarked}
+          checked={offer.isFavourite}
           onClick={onAddToBookmarksClick}
         />
       </div>
@@ -38,21 +38,21 @@ export const OfferDetails: FC<OfferDetailsProps> = ({ offer }) => {
           {capitalize(offer.type)}
         </li>
         <li className="offer__feature offer__feature--bedrooms">
-          {offer.numberOfBedrooms} Bedrooms
+          {offer.bedrooms} Bedrooms
         </li>
         <li className="offer__feature offer__feature--adults">
-          Max {offer.maxGuests} adults
+          Max {offer.maxAdults} adults
         </li>
       </ul>
       <div className="offer__price">
-        <b className="offer__price-value">&euro;{offer.valuePerNight}</b>
+        <b className="offer__price-value">&euro;{offer.price}</b>
         <span className="offer__price-text">&nbsp;night</span>
       </div>
-      {offer.insideItems && (
+      {offer.goods && (
         <div className="offer__inside">
           <h2 className="offer__inside-title">What&apos;s inside</h2>
           <ul className="offer__inside-list">
-            {offer.insideItems.map((item, index) => (
+            {offer.goods.map((item, index) => (
               <li className="offer__inside-item" key={index}>
                 {item}
               </li>

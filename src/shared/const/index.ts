@@ -1,32 +1,54 @@
 export const CITIES = [
   {
-    title: 'Paris',
-    latitude: 48.85882537322779,
-    longitude: 2.3473759846652698,
+    name: 'Paris',
+    location: {
+      latitude: 48.85661,
+      longitude: 2.351499,
+      zoom: 13,
+    },
   },
   {
-    title: 'Cologne',
-    latitude: 50.93941724466376,
-    longitude: 6.95564047330613,
+    name: 'Cologne',
+    location: {
+      latitude: 50.938361,
+      longitude: 6.959974,
+      zoom: 13,
+    },
   },
   {
-    title: 'Brussels',
-    latitude: 50.850759989312415,
-    longitude: 4.358248709361301,
+    name: 'Brussels',
+    location: {
+      latitude: 50.846557,
+      longitude: 4.351697,
+      zoom: 13,
+    },
   },
   {
-    title: 'Amsterdam',
-    latitude: 52.376897443744696,
-    longitude: 4.8956664177914035,
+    name: 'Amsterdam',
+    location: {
+      latitude: 52.37454,
+      longitude: 4.897976,
+      zoom: 13,
+    },
   },
   {
-    title: 'Hamburg',
-    latitude: 53.55152393703451,
-    longitude: 9.990297815872312,
+    name: 'Hamburg',
+    location: {
+      latitude: 53.550341,
+      longitude: 10.000654,
+      zoom: 13,
+    },
   },
   {
-    title: 'Dusseldorf',
-    latitude: 51.22500984584552,
-    longitude: 6.770396034688684,
+    name: 'Dusseldorf',
+    location: {
+      latitude: 51.225402,
+      longitude: 6.776314,
+      zoom: 13,
+    },
   },
 ];
+
+export const BASE_URL = 'https://14.design.htmlacademy.pro/six-cities';
+export const REQUEST_TIMEOUT = 5000;
+export const AUTH_TOKEN_KEY = 'six-cities-token';

@@ -1,7 +1,7 @@
 import type { FC, MouseEventHandler } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import type { Offer } from '../model/types';
+import type { OfferListItem } from '../model/types';
 
 import { AddToBookmarksButton } from 'features';
 import { capitalize } from 'shared/lib';
@@ -9,7 +9,7 @@ import { Card } from 'shared/ui';
 
 type OfferCardProps = {
   className?: string;
-  offer: Offer;
+  offer: OfferListItem;
   onMouseEnter?: MouseEventHandler<HTMLElement>;
   onMouseLeave?: MouseEventHandler<HTMLElement>;
 };
@@ -30,17 +30,17 @@ export const OfferCard: FC<OfferCardProps> = ({
       className={className}
       title={offer.title}
       footnote={capitalize(offer.type)}
-      price={offer.valuePerNight}
+      price={offer.price}
       rating={offer.rating}
       mark={offer.isPremium ? 'Premium' : ''}
-      preview={{ src: offer.previews[0], alt: 'Place image' }}
+      preview={{ src: offer.previewImage, alt: 'Place image' }}
       onClick={onCardTitleClick}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       extraSlotContent={
         <AddToBookmarksButton
           className="place-card"
-          checked={offer.isBookmarked}
+          checked={offer.isFavourite}
           onClick={onAddToBookmarksButtonClick}
         />
       }

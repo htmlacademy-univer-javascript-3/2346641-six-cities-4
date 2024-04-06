@@ -19,7 +19,7 @@ export const OfferHost: FC<OfferHostProps> = ({ host, descriptions }) => {
         >
           <img
             className="offer__avatar user__avatar"
-            src={host.avatar}
+            src={host.avatarUrl}
             width="74"
             height="74"
             alt="Host avatar"

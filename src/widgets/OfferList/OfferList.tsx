@@ -1,10 +1,10 @@
 import { type FC } from 'react';
 
-import { OfferCard, type Offer } from 'entities';
+import { OfferCard, type OfferListItem } from 'entities';
 import { useOfferSort } from 'features/SortOffers';
 
 type OfferListProps = {
-  offers?: Offer[];
+  offers?: OfferListItem[];
   onListItemMouseEnter?: (listItemId: string) => void;
   onListItemMouseLeave?: (listItemId: string) => void;
 };
@@ -16,10 +16,10 @@ export const OfferList: FC<OfferListProps> = ({
 }) => {
   const sortFn = useOfferSort();
 
-  const handleItemMouseEnter = (offer: Offer) => () =>
+  const handleItemMouseEnter = (offer: OfferListItem) => () =>
     onListItemMouseEnter?.(offer.id);
 
-  const handleItemMouseLeave = (offer: Offer) => () =>
+  const handleItemMouseLeave = (offer: OfferListItem) => () =>
     onListItemMouseLeave?.(offer.id);
 
   return (

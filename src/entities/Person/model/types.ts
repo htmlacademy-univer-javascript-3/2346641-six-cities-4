@@ -1,6 +1,5 @@
 export type Person = {
-  id: string;
-  avatar: string;
   name: string;
+  avatarUrl: string;
   isPro: boolean;
 };

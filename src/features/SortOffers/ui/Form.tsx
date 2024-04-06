@@ -1,9 +1,10 @@
+import cn from 'classnames';
 import { useState, type FC } from 'react';
 
-import cn from 'classnames';
-import { useTypedSelector } from 'shared/hooks';
 import { useOfferSortActions } from '..';
 import { offerSortTypes, type OfferSortType } from '../model/types';
+
+import { useTypedSelector } from 'shared/hooks';
 
 type OptionProps = {
   title: string;

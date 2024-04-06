@@ -1,27 +1,25 @@
 import { useState, type FC } from 'react';
 
-import type { Offer, Point } from 'entities';
+import type { Point } from 'entities';
 import { SortOffersForm } from 'features';
 import { useTypedSelector } from 'shared/hooks';
-import { Page } from 'shared/ui';
+import { Page, Spinner } from 'shared/ui';
 import { CityMap, CityTabs, OfferList } from 'widgets';
 
-export interface MainPageProps {
-  offers?: Offer[];
-}
-
-export const Main: FC<MainPageProps> = ({ offers }) => {
+export const Main: FC = () => {
   const [selectedPoint, setSelectedPoint] = useState<Point | undefined>();
   const currentCity = useTypedSelector((state) => state.city);
+  const offersState = useTypedSelector((state) => state.offers);
+  const offers = offersState.offers[currentCity.name];
+  const isLoading = offersState.status === 'loading';
 
   const handleListItemHover = (listItemId: string) => {
     if (offers) {
-      const currentOffer = offers.find((offer) => offer.id === listItemId)!;
-
+      const targetOffer = offers.find((offer) => offer.id === listItemId)!;
       setSelectedPoint({
-        id: currentOffer.id,
-        latitude: currentOffer.coords.latitude,
-        longitude: currentOffer.coords.longitude,
+        id: targetOffer.id,
+        latitude: targetOffer.location.latitude,
+        longitude: targetOffer.location.longitude,
       });
     }
   };
@@ -34,29 +32,33 @@ export const Main: FC<MainPageProps> = ({ offers }) => {
         <h1 className="visually-hidden">Cities</h1>
         <CityTabs />
         <div className="cities">
-          <div className="cities__places-container container">
-            <section className="cities__places places">
-              <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">
-                {offers?.length} places to stay in {currentCity.title}
-              </b>
-              <SortOffersForm />
-              <OfferList
-                offers={offers}
-                onListItemMouseEnter={handleListItemHover}
-                onListItemMouseLeave={handleListItemMouseLeave}
-              />
-            </section>
-            <div className="cities__right-section">
-              {offers && (
-                <CityMap
-                  city={currentCity}
+          {isLoading ? (
+            <Spinner />
+          ) : (
+            <div className="cities__places-container container">
+              <section className="cities__places places">
+                <h2 className="visually-hidden">Places</h2>
+                <b className="places__found">
+                  {offers.length} places to stay in {currentCity.name}
+                </b>
+                <SortOffersForm />
+                <OfferList
                   offers={offers}
-                  selectedPoint={selectedPoint}
+                  onListItemMouseEnter={handleListItemHover}
+                  onListItemMouseLeave={handleListItemMouseLeave}
                 />
-              )}
+              </section>
+              <div className="cities__right-section">
+                {offers && (
+                  <CityMap
+                    city={currentCity}
+                    offers={offers}
+                    selectedPoint={selectedPoint}
+                  />
+                )}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </Page>
     </div>
