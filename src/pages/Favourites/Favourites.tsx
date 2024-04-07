@@ -5,31 +5,34 @@ import type { OfferListItem, SixCities } from 'entities';
 import { AddToBookmarksButton } from 'features';
 import { useGetFavouritesQuery } from 'features/AddToFavourites';
 import { capitalize } from 'shared/lib';
-import { Page, Rating, Spinner } from 'shared/ui';
-import { FavouritesFooter, FavouritesPlaceholder } from 'widgets';
+import { Rating, Spinner } from 'shared/ui';
+import { EmptyFavourites, FavouritesFooter, Header } from 'widgets';
 
 export const Favourites: FC = () => {
   const { data, isLoading, error } = useGetFavouritesQuery();
 
-  if (error) {
+  if (isLoading || error || !data) {
     return (
-      <Page name="favorites">
-        <div className="page__favorites-container container">
-          <h1>Вы не авторизованы для просмотра этой страницы.</h1>
-          <h2>Пожалуйста, войдите в аккаунт.</h2>
-        </div>
-        <FavouritesFooter />
-      </Page>
-    );
-  }
-  if (isLoading || !data) {
-    return (
-      <Page name="favorites">
-        <div className="page__favorites-container container">
-          <Spinner />
-        </div>
-        <FavouritesFooter />
-      </Page>
+      <div className="page page--favorites-empty">
+        <Header />
+        <main className="page__main page__main--favorites page__main--favorites-empty">
+          <div className="page__favorites-container container full-height">
+            {isLoading ? (
+              <Spinner />
+            ) : (
+              <section className="favorites favorites--empty">
+                <div className="favorites__status-wrapper">
+                  <b className="favorites__status">Unauthorized.</b>
+                  <p className="favorites__status-description">
+                    Please, sign in for us to know your favourite offers.
+                  </p>
+                </div>
+              </section>
+            )}
+          </div>
+          <FavouritesFooter />
+        </main>
+      </div>
     );
   }
 
@@ -46,10 +49,15 @@ export const Favourites: FC = () => {
     }
   });
 
+  if (data.length === 0) {
+    return <EmptyFavourites />;
+  }
+
   return (
-    <Page name="favorites">
-      <div className="page__favorites-container container">
-        {data.length > 0 ? (
+    <div className="page">
+      <Header />
+      <main className="page__main page__main--favorites">
+        <div className="page__favorites-container container">
           <section className="favorites">
             <h1 className="favorites__title">Saved listing</h1>
             <ul className="favorites__list">
@@ -118,11 +126,9 @@ export const Favourites: FC = () => {
               ))}
             </ul>
           </section>
-        ) : (
-          <FavouritesPlaceholder />
-        )}
-      </div>
-      <FavouritesFooter />
-    </Page>
+        </div>
+        <FavouritesFooter />
+      </main>
+    </div>
   );
 };

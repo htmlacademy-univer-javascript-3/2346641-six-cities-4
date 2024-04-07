@@ -1,6 +1,10 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import {
+  Outlet,
+  RouterProvider,
+  ScrollRestoration,
+  createBrowserRouter,
+} from 'react-router-dom';
 
-import { Layout } from './Layout';
 import { ProtectedRoute } from './ProtectedRoute';
 
 import {
@@ -14,7 +18,12 @@ import {
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Layout />,
+    element: (
+      <>
+        <Outlet />
+        <ScrollRestoration />
+      </>
+    ),
     children: [
       {
         index: true,
@@ -32,15 +41,15 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
+      {
+        path: 'login',
+        element: <LoginPage />,
+      },
+      {
+        path: '*',
+        element: <NotFoundPage />,
+      },
     ],
-  },
-  {
-    path: '/login',
-    element: <LoginPage />,
-  },
-  {
-    path: '*',
-    element: <NotFoundPage />,
   },
 ]);
 
