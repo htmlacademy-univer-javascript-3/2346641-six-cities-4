@@ -1,9 +1,12 @@
 import { useState, type FC } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { useSetFavouriteStatusMutation } from '../api/favourites-api';
 
 import { useOffersActions, type BaseOffer } from 'entities/Offer';
 import { useTypedSelector } from 'shared/hooks';
+import { TokenService } from 'shared/services';
 import { Icon, Spinner } from 'shared/ui';
-import { useSetFavouriteStatusMutation } from '../api/favourites-api';
 
 type ButtonProps = {
   offer: BaseOffer;
@@ -12,12 +15,18 @@ type ButtonProps = {
 
 export const Button: FC<ButtonProps> = ({ offer, className }) => {
   const [isLoading, setIsLoading] = useState(false);
-  const favourites = useTypedSelector((state) => state.offers.favourites);
-  const isFavourite = favourites.includes(offer.id);
+  const navigate = useNavigate();
   const { setFavourite } = useOffersActions();
   const [setStatus] = useSetFavouriteStatusMutation();
 
+  const favourites = useTypedSelector((state) => state.offers.favourites);
+  const isFavourite = favourites.includes(offer.id);
+
   const handleClick = () => {
+    if (!TokenService.get()) {
+      navigate('/login');
+    }
+
     setIsLoading(true);
     setStatus({ offerId: offer.id, status: !isFavourite })
       .unwrap()

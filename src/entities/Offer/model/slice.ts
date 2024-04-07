@@ -1,4 +1,4 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
 import { fetchOffers } from '../api/fetchOffers';
 import type { BaseOffer, OffersState } from './types';
