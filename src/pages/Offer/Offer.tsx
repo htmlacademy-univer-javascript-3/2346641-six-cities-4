@@ -46,10 +46,7 @@ export const Offer: FC = () => {
             <div className="offer__container container">
               <div className="offer__wrapper">
                 <OfferDetails offer={offer} />
-                <OfferHost
-                  host={offer.host}
-                  descriptions={[offer.description]}
-                />
+                <OfferHost host={offer.host} description={offer.description} />
                 <OfferReviews offerId={offer.id} />
               </div>
             </div>

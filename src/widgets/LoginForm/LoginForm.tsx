@@ -18,9 +18,6 @@ export const LoginForm: FC = () => {
       .unwrap()
       .then(() => {
         navigate('/');
-      })
-      .catch((reason) => {
-        console.log(reason);
       });
   };
 

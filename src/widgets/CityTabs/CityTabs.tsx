@@ -1,4 +1,4 @@
-import { useCallback, type FC } from 'react';
+import { memo, useCallback } from 'react';
 
 import { CityTabItem } from './CityTabItem';
 
@@ -7,7 +7,7 @@ import { useCityActions } from 'entities/City';
 import { CITIES } from 'shared/const';
 import { useTypedSelector } from 'shared/hooks';
 
-export const CityTabs: FC = () => {
+export const CityTabs = memo(function CityTabs() {
   const currentCity = useTypedSelector((state) => state.city);
   const { setCity } = useCityActions();
 
@@ -35,6 +35,4 @@ export const CityTabs: FC = () => {
       </section>
     </div>
   );
-};
-
-CityTabs.displayName = 'CityTabs';
+});

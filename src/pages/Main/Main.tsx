@@ -1,4 +1,4 @@
-import { useState, type FC } from 'react';
+import { useCallback, useState, type FC } from 'react';
 
 import { SortOffersForm } from 'features';
 import { useTypedSelector } from 'shared/hooks';
@@ -13,6 +13,25 @@ export const Main: FC = () => {
   const offers = offersState.offers[currentCity.name];
   const isLoading = offersState.status === 'loading';
 
+  const handleListItemHover = useCallback(
+    (listItemId: string) => {
+      if (offers) {
+        const targetOffer = offers.find((offer) => offer.id === listItemId)!;
+        setSelectedPoint({
+          id: targetOffer.id,
+          latitude: targetOffer.location.latitude,
+          longitude: targetOffer.location.longitude,
+        });
+      }
+    },
+    [offers]
+  );
+
+  const handleListItemMouseLeave = useCallback(
+    () => setSelectedPoint(undefined),
+    []
+  );
+
   if (isLoading) {
     return (
       <div className="page page--gray page--main">
@@ -25,19 +44,6 @@ export const Main: FC = () => {
       </div>
     );
   }
-
-  const handleListItemHover = (listItemId: string) => {
-    if (offers) {
-      const targetOffer = offers.find((offer) => offer.id === listItemId)!;
-      setSelectedPoint({
-        id: targetOffer.id,
-        latitude: targetOffer.location.latitude,
-        longitude: targetOffer.location.longitude,
-      });
-    }
-  };
-
-  const handleListItemMouseLeave = () => setSelectedPoint(undefined);
 
   return (
     <div className="page page--gray page--main">

@@ -1,4 +1,4 @@
-import { type FC } from 'react';
+import { memo } from 'react';
 
 import { OfferCard, type OfferListItem } from 'entities';
 import { useOfferSort } from 'features/SortOffers';
@@ -9,11 +9,8 @@ type OfferListProps = {
   onListItemMouseLeave?: (listItemId: string) => void;
 };
 
-export const OfferList: FC<OfferListProps> = ({
-  offers,
-  onListItemMouseEnter,
-  onListItemMouseLeave,
-}) => {
+export const OfferList = memo(function OfferList(props: OfferListProps) {
+  const { offers, onListItemMouseEnter, onListItemMouseLeave } = props;
   const sortFn = useOfferSort();
 
   const handleItemMouseEnter = (offer: OfferListItem) => () =>
@@ -38,6 +35,4 @@ export const OfferList: FC<OfferListProps> = ({
           ))}
     </div>
   );
-};
-
-OfferList.displayName = 'OfferList';
+});

@@ -4,10 +4,10 @@ import type { Person } from 'entities';
 
 type OfferHostProps = {
   host: Person;
-  descriptions?: string[];
+  description: string;
 };
 
-export const OfferHost: FC<OfferHostProps> = ({ host, descriptions }) => {
+export const OfferHost: FC<OfferHostProps> = ({ host, description }) => {
   return (
     <div className="offer__host">
       <h2 className="offer__host-title">Meet the host</h2>
@@ -28,15 +28,9 @@ export const OfferHost: FC<OfferHostProps> = ({ host, descriptions }) => {
         <span className="offer__user-name">{host.name}</span>
         {host.isPro && <span className="offer__user-status">Pro</span>}
       </div>
-      {descriptions && (
-        <div className="offer__description">
-          {descriptions.map((desc, index) => (
-            <p className="offer__text" key={index}>
-              {desc}
-            </p>
-          ))}
-        </div>
-      )}
+      <div className="offer__description">
+        <p className="offer__text">{description}</p>
+      </div>
     </div>
   );
 };
