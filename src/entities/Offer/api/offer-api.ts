@@ -1,10 +1,6 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import { HttpService } from 'shared/services';
-import type {
-  ExtendedOffer,
-  OfferListItem,
-  ResponseOffer,
-} from '../model/types';
+import type { ExtendedOffer, OfferListItem } from '../model/types';
 
 export const OfferAPI = createApi({
   reducerPath: 'api/offer',
@@ -19,9 +15,6 @@ export const OfferAPI = createApi({
     getNearbyOffers: build.query<OfferListItem[], { id: string }>({
       query: (arg) => `/offers/${arg.id}/nearby`,
     }),
-    getFavouriteOffers: build.query<ResponseOffer[], void>({
-      query: () => '/favorite',
-    }),
   }),
 });
 
@@ -29,5 +22,4 @@ export const {
   useGetOffersQuery,
   useGetOfferByIdQuery,
   useGetNearbyOffersQuery,
-  useGetFavouriteOffersQuery,
 } = OfferAPI;

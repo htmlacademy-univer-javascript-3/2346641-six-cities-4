@@ -9,12 +9,11 @@ import {
   type PointTuple,
 } from 'leaflet';
 
+import { MAP_ATTRIBUTION, MAP_CDN_URL, MARKER_BASE_URL } from 'shared/const';
 import type { Location } from 'shared/types';
 
-const MARKET_BASE_URL =
-  'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map';
-const MARKER_URL_DEFAULT = MARKET_BASE_URL + '/pin.svg';
-const MARKER_URL_CURRENT = MARKET_BASE_URL + '/main-pin.svg';
+const MARKER_URL_DEFAULT = MARKER_BASE_URL + '/pin.svg';
+const MARKER_URL_CURRENT = MARKER_BASE_URL + '/main-pin.svg';
 const MARKER_ICON_SIZE: PointTuple = [40, 40];
 const MARKER_ICON_ANCHOR: PointTuple = [20, 20];
 
@@ -51,13 +50,9 @@ export const useMap = (
         zoom: city.zoom,
       });
 
-      const layer = new TileLayer(
-        'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
-        {
-          attribution:
-            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-        }
-      );
+      const layer = new TileLayer(MAP_CDN_URL, {
+        attribution: MAP_ATTRIBUTION,
+      });
 
       instance.addLayer(layer);
 

@@ -9,7 +9,7 @@ type CommentProps = {
   authorName: string;
   text: string;
   rating: number;
-  date: Date;
+  date: string;
 };
 
 export const Comment: FC<CommentProps> = ({
@@ -19,6 +19,8 @@ export const Comment: FC<CommentProps> = ({
   rating,
   date,
 }) => {
+  const dateObj = new Date(date);
+
   return (
     <li className="reviews__item">
       <div className="reviews__user user">
@@ -36,8 +38,8 @@ export const Comment: FC<CommentProps> = ({
       <div className="reviews__info">
         <Rating className="reviews" rating={rating} />
         <p className="reviews__text">{text}</p>
-        <time className="reviews__time" dateTime={getHTMLDateTime(date)}>
-          {getMonthYear(date)}
+        <time className="reviews__time" dateTime={getHTMLDateTime(dateObj)}>
+          {getMonthYear(dateObj)}
         </time>
       </div>
     </li>

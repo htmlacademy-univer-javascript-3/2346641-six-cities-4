@@ -1,9 +1,15 @@
+import { useAddCommentMutation } from 'entities/Comment';
 import {
   useState,
   type ChangeEvent,
   type FC,
   type MouseEventHandler,
 } from 'react';
+
+const initialState = {
+  rating: 0,
+  text: '',
+};
 
 type ReviewFormData = {
   rating: number;
@@ -12,13 +18,17 @@ type ReviewFormData = {
 
 type ReviewFormProps = {
   offerId: string;
+  onSuccess?: VoidFunction;
+  formKey: string;
 };
 
-export const ReviewForm: FC<ReviewFormProps> = ({ offerId }) => {
-  const [formData, setFormData] = useState<ReviewFormData>({
-    rating: 0,
-    text: '',
-  });
+export const ReviewForm: FC<ReviewFormProps> = ({
+  offerId,
+  onSuccess,
+  formKey,
+}) => {
+  const [createReview] = useAddCommentMutation();
+  const [formData, setFormData] = useState<ReviewFormData>(initialState);
 
   const onRatingInput = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, rating: +e.target.value });
@@ -30,12 +40,22 @@ export const ReviewForm: FC<ReviewFormProps> = ({ offerId }) => {
 
   const onSubmitButtonClick: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
-    console.log(offerId);
-    console.log(formData);
+    createReview({
+      offerId: offerId,
+      comment: {
+        comment: formData.text,
+        rating: formData.rating,
+      },
+    })
+      .unwrap()
+      .then(() => {
+        onSuccess && onSuccess();
+        setFormData(initialState);
+      });
   };
 
   return (
-    <form className="reviews__form form" action="#" method="post">
+    <form className="reviews__form form" action="#" method="post" key={formKey}>
       <label className="reviews__label form__label" htmlFor="review">
         Your review
       </label>
@@ -147,7 +167,9 @@ export const ReviewForm: FC<ReviewFormProps> = ({ offerId }) => {
           className="reviews__submit form__submit button"
           type="submit"
           onClick={onSubmitButtonClick}
-          disabled={!formData.text || !formData.rating}
+          disabled={
+            !formData.text || !formData.rating || formData.text.length < 50
+          }
         >
           Submit
         </button>

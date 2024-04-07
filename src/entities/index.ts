@@ -4,7 +4,6 @@ export { ReviewComment } from './Comment/ui/ReviewComment';
 export type { ExtendedOffer, OfferListItem } from './Offer/model/types';
 export { OfferCard } from './Offer/ui/OfferCard';
 export { OfferGallery } from './Offer/ui/OfferGallery';
-export type { Point } from './Point/model/types';
 
 export type Person = {
   name: string;

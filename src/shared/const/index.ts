@@ -52,3 +52,10 @@ export const CITIES = [
 export const BASE_URL = 'https://14.design.htmlacademy.pro/six-cities';
 export const REQUEST_TIMEOUT = 5000;
 export const AUTH_TOKEN_KEY = 'six-cities-token';
+
+export const MARKER_BASE_URL =
+  'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map';
+export const MAP_CDN_URL =
+  'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
+export const MAP_ATTRIBUTION =
+  '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';

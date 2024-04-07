@@ -3,6 +3,7 @@ import type { FC } from 'react';
 import { ReviewComment } from 'entities';
 import { useGetCommentsQuery } from 'entities/Comment';
 import { CreateOfferReviewForm } from 'features';
+import { useTypedSelector } from 'shared/hooks';
 import { Spinner } from 'shared/ui';
 
 type OfferReviewsProps = {
@@ -10,7 +11,11 @@ type OfferReviewsProps = {
 };
 
 export const OfferReviews: FC<OfferReviewsProps> = ({ offerId }) => {
-  const { data, isLoading } = useGetCommentsQuery({ offerId });
+  const user = useTypedSelector((state) => state.auth.user);
+
+  const { data, isLoading, refetch, requestId } = useGetCommentsQuery({
+    offerId,
+  });
 
   if (isLoading || !data) {
     return (
@@ -32,7 +37,13 @@ export const OfferReviews: FC<OfferReviewsProps> = ({ offerId }) => {
           ))}
         </ul>
       )}
-      <CreateOfferReviewForm offerId={offerId} />
+      {user && (
+        <CreateOfferReviewForm
+          offerId={offerId}
+          onSuccess={refetch}
+          formKey={`${requestId}`}
+        />
+      )}
     </section>
   );
 };

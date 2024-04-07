@@ -1,7 +1,8 @@
 import { useRef, type FC } from 'react';
 
-import { type ExtendedOffer, type OfferListItem, type Point } from 'entities';
+import { type ExtendedOffer, type OfferListItem } from 'entities';
 import { useMap } from 'shared/hooks';
+import type { Point } from 'shared/types';
 
 type OfferMapProps = {
   offer: ExtendedOffer;
