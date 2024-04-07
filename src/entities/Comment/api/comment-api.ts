@@ -16,9 +16,9 @@ export const CommentAPI = createApi({
       { offerId: string; comment: CommentPayload }
     >({
       query: (arg) => ({
-        url: `/offers/${arg.offerId}`,
+        url: `/comments/${arg.offerId}`,
         method: HttpService.HttpMethods.POST,
-        body: arg.comment,
+        data: arg.comment,
       }),
     }),
   }),

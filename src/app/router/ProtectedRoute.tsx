@@ -8,7 +8,7 @@ type ProtectedRouteProps = {
 
 export const ProtectedRoute: FC<ProtectedRouteProps> = ({ children }) => {
   const user = useTypedSelector((state) => state.auth.user);
-  console.log(user);
+
   if (!user) {
     return <Navigate to="/login" replace />;
   }

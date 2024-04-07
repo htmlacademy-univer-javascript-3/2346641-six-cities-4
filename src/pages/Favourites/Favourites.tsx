@@ -2,14 +2,14 @@ import type { FC } from 'react';
 import { Link } from 'react-router-dom';
 
 import type { OfferListItem, SixCities } from 'entities';
-import { useGetFavouriteOffersQuery } from 'entities/Offer';
 import { AddToBookmarksButton } from 'features';
+import { useGetFavouritesQuery } from 'features/AddToFavourites';
 import { capitalize } from 'shared/lib';
 import { Page, Rating, Spinner } from 'shared/ui';
 import { FavouritesFooter, FavouritesPlaceholder } from 'widgets';
 
 export const Favourites: FC = () => {
-  const { data, isLoading, error } = useGetFavouriteOffersQuery();
+  const { data, isLoading, error } = useGetFavouritesQuery();
 
   if (error) {
     return (
@@ -49,7 +49,7 @@ export const Favourites: FC = () => {
   return (
     <Page name="favorites">
       <div className="page__favorites-container container">
-        {items ? (
+        {data.length > 0 ? (
           <section className="favorites">
             <h1 className="favorites__title">Saved listing</h1>
             <ul className="favorites__list">

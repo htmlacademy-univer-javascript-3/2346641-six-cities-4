@@ -1,8 +1,8 @@
 import { useState, type FC } from 'react';
 
-import type { Point } from 'entities';
 import { SortOffersForm } from 'features';
 import { useTypedSelector } from 'shared/hooks';
+import type { Point } from 'shared/types';
 import { Page, Spinner } from 'shared/ui';
 import { CityMap, CityTabs, OfferList } from 'widgets';
 

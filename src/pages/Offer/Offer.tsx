@@ -1,11 +1,12 @@
 import type { FC } from 'react';
-import { useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 
 import { Page, Spinner } from 'shared/ui';
 
 import { OfferGallery } from 'entities';
 
 import { useGetNearbyOffersQuery, useGetOfferByIdQuery } from 'entities/Offer';
+import { ServerError } from 'shared/types';
 import {
   NearPlaces,
   OfferDetails,
@@ -16,10 +17,14 @@ import {
 
 export const Offer: FC = () => {
   const { id } = useParams();
-  const { data: offer, isLoading } = useGetOfferByIdQuery({ id: id! });
+  const { data: offer, isLoading, error } = useGetOfferByIdQuery({ id: id! });
   const { data: nearby } = useGetNearbyOffersQuery({
     id: id!,
   });
+
+  if (error && (error as ServerError).status === 404) {
+    return <Navigate to="/404" />;
+  }
 
   if (isLoading || !offer) {
     return (

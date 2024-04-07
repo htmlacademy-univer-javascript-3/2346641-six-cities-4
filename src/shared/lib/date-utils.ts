@@ -5,6 +5,8 @@ export const getHTMLDateTime = (date: Date) => {
 };
 
 export const getMonthYear = (date: Date) => {
-  console.log(date);
-  return 'April 2019';
+  return new Intl.DateTimeFormat('en-GB', {
+    month: 'long',
+    year: 'numeric',
+  }).format(date);
 };

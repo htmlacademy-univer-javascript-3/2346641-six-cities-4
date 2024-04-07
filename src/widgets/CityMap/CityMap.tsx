@@ -1,7 +1,8 @@
 import { useRef, type FC } from 'react';
 
-import type { City, OfferListItem, Point } from 'entities';
+import type { City, OfferListItem } from 'entities';
 import { useMap } from 'shared/hooks';
+import type { Point } from 'shared/types';
 
 type CityMapProps = {
   city: City;
