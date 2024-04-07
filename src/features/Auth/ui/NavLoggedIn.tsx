@@ -1,11 +1,15 @@
 import type { FC, MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
 
+import { useTypedSelector } from 'shared/hooks';
 import { useLogoutMutation } from '../api/auth-api';
 import type { User } from '../model/types';
 
 export const NavLoggedIn: FC<{ user: User }> = ({ user }) => {
   const [logout] = useLogoutMutation();
+  const favouritesCount = useTypedSelector(
+    (state) => state.offers.favourites.length
+  );
 
   const handleLogout = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -22,7 +26,7 @@ export const NavLoggedIn: FC<{ user: User }> = ({ user }) => {
           >
             <div className="header__avatar-wrapper user__avatar-wrapper"></div>
             <span className="header__user-name user__name">{user.email}</span>
-            <span className="header__favorite-count">3</span>
+            <span className="header__favorite-count">{favouritesCount}</span>
           </Link>
         </li>
         <li className="header__nav-item">

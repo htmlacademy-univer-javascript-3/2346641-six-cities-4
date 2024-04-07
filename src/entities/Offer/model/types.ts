@@ -9,7 +9,7 @@ export type BaseOffer = {
   type: OfferHousehold;
   price: number;
   location: Location;
-  isFavourite: boolean;
+  isFavorite?: boolean;
   isPremium: boolean;
   rating: number;
 };

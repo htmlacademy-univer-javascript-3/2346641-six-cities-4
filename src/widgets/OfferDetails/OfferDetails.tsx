@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 
 import type { ExtendedOffer } from 'entities';
-import { AddToBookmarksButton } from 'features';
+import { AddToFavouritesButton } from 'features';
 import { capitalize } from 'shared/lib';
 import { Rating } from 'shared/ui';
 
@@ -10,8 +10,6 @@ type OfferDetailsProps = {
 };
 
 export const OfferDetails: FC<OfferDetailsProps> = ({ offer }) => {
-  const onAddToBookmarksClick = () => {};
-
   return (
     <>
       {offer.isPremium && (
@@ -21,11 +19,7 @@ export const OfferDetails: FC<OfferDetailsProps> = ({ offer }) => {
       )}
       <div className="offer__name-wrapper">
         <h1 className="offer__name">{offer.title}</h1>
-        <AddToBookmarksButton
-          className="offer"
-          checked={offer.isFavourite}
-          onClick={onAddToBookmarksClick}
-        />
+        <AddToFavouritesButton className="offer" offer={offer} />
       </div>
       <div className="offer__rating rating">
         <Rating className="offer" rating={offer.rating} />

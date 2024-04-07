@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import type { OfferListItem } from '../model/types';
 
-import { AddToBookmarksButton } from 'features';
+import { AddToFavouritesButton } from 'features';
 import { capitalize } from 'shared/lib';
 import { Card } from 'shared/ui';
 
@@ -23,7 +23,6 @@ export const OfferCard: FC<OfferCardProps> = ({
   const navigate = useNavigate();
 
   const onCardTitleClick = () => navigate(`/offer/${offer.id}`);
-  const onAddToBookmarksButtonClick = () => {};
 
   return (
     <Card
@@ -38,11 +37,7 @@ export const OfferCard: FC<OfferCardProps> = ({
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       extraSlotContent={
-        <AddToBookmarksButton
-          className="place-card"
-          checked={offer.isFavourite}
-          onClick={onAddToBookmarksButtonClick}
-        />
+        <AddToFavouritesButton className="place-card" offer={offer} />
       }
     />
   );
