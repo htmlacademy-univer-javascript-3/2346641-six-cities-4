@@ -1,7 +1,8 @@
 export { CityMap } from './CityMap/CityMap';
 export { CityTabs } from './CityTabs/CityTabs';
+export { EmptyFavourites } from './EmptyFavourites/EmptyFavourites';
+export { EmptyMain } from './EmptyMain/EmptyMain';
 export { FavouritesFooter } from './FavouritesFooter/FavouritesFooter';
-export { FavouritesPlaceholder } from './FavouritesPlaceholder/FavouritesPlaceholder';
 export { Header } from './Header/Header';
 export { LoginForm } from './LoginForm/LoginForm';
 export { NearPlaces } from './NearPlaces/NearPlaces';

@@ -83,3 +83,21 @@
   background-position: center top;
   background-repeat: no-repeat;
 }
+
+.cities__right-section {
+  background-image: url(../img/no-places.png);
+  background-size: auto 119%;
+  background-repeat: no-repeat;
+  background-position: right 100%
+}
+
+@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+  .page__main--index-empty .cities__right-section {
+    background-image: url(../img/no-places@2x.png);
+  }
+}
+
+.full-height {
+  padding-top: 25%;
+  height: 100dvh;
+}

@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
-import { Page } from 'shared/ui';
+
 import { FavouritesFooter, Header } from 'widgets';
 
 export const NotFound = () => {
   return (
     <div className="page page--gray page--main">
-      <Page name="index">
+      <main className="page__main page__main--index page__main--index-empty">
         <Header />
         <div className="page__favorites-container container">
           <section className="favorites favorites--empty">
@@ -24,7 +24,7 @@ export const NotFound = () => {
             </div>
           </section>
         </div>
-      </Page>
+      </main>
       <FavouritesFooter />
     </div>
   );

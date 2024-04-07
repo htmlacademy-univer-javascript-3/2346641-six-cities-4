@@ -1,13 +1,12 @@
 import type { FC } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 
-import { Page, Spinner } from 'shared/ui';
-
 import { OfferGallery } from 'entities';
-
 import { useGetNearbyOffersQuery, useGetOfferByIdQuery } from 'entities/Offer';
-import { ServerError } from 'shared/types';
+import type { ServerError } from 'shared/types';
+import { Spinner } from 'shared/ui';
 import {
+  Header,
   NearPlaces,
   OfferDetails,
   OfferHost,
@@ -28,29 +27,35 @@ export const Offer: FC = () => {
 
   if (isLoading || !offer) {
     return (
-      <Page name="offer">
-        <Spinner />
-      </Page>
+      <div className="page">
+        <Header />
+        <main className="page__main page__main--offer full-height">
+          <Spinner />
+        </main>
+      </div>
     );
   }
 
   return (
-    <Page name="offer">
-      <>
-        <section className="offer">
-          <OfferGallery offer={offer} />
-          <div className="offer__container container">
-            <div className="offer__wrapper">
-              <OfferDetails offer={offer} />
-              <OfferHost host={offer.host} descriptions={[offer.description]} />
-              <OfferReviews offerId={offer.id} />
+    <div className="page">
+      <Header />
+      <main className="page__main page__main--offer">
+        <>
+          <section className="offer">
+            <OfferGallery offer={offer} />
+            <div className="offer__container container">
+              <div className="offer__wrapper">
+                <OfferDetails offer={offer} />
+                <OfferHost host={offer.host} description={offer.description} />
+                <OfferReviews offerId={offer.id} />
+              </div>
             </div>
-          </div>
-          {nearby && <OfferMap offer={offer} nearPlaces={nearby} />}
-        </section>
-        {nearby && <NearPlaces nearPlaces={nearby} />}
-      </>
-    </Page>
+            {nearby && <OfferMap offer={offer} nearPlaces={nearby} />}
+          </section>
+          {nearby && <NearPlaces nearPlaces={nearby} />}
+        </>
+      </main>
+    </div>
   );
 };
 

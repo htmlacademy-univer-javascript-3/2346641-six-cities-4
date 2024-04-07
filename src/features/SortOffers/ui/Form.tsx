@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { useState, type FC } from 'react';
+import { memo, useState, type FC } from 'react';
 
 import { useOfferSortActions } from '..';
 import { offerSortTypes, type OfferSortType } from '../model/types';
@@ -28,7 +28,7 @@ const Option: FC<OptionProps> = ({ title, active, onClick }) => {
   );
 };
 
-export const Form: FC = () => {
+export const Form = memo(function Form() {
   const [isOpened, setIsOpened] = useState(false);
   const current = useTypedSelector((state) => state.offerSort);
   const { setSortType } = useOfferSortActions();
@@ -69,6 +69,6 @@ export const Form: FC = () => {
       </ul>
     </form>
   );
-};
+});
 
 Form.displayName = 'Form';

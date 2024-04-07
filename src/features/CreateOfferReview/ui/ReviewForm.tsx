@@ -1,4 +1,3 @@
-import { useAddCommentMutation } from 'entities/Comment';
 import {
   useState,
   type ChangeEvent,
@@ -6,14 +5,16 @@ import {
   type MouseEventHandler,
 } from 'react';
 
-const initialState = {
-  rating: 0,
-  text: '',
-};
+import { useAddCommentMutation } from 'entities/Comment';
 
 type ReviewFormData = {
   rating: number;
   text: string;
+};
+
+const initialState: ReviewFormData = {
+  rating: 0,
+  text: '',
 };
 
 type ReviewFormProps = {
@@ -29,6 +30,11 @@ export const ReviewForm: FC<ReviewFormProps> = ({
 }) => {
   const [createReview] = useAddCommentMutation();
   const [formData, setFormData] = useState<ReviewFormData>(initialState);
+  const isSubmitAllowed =
+    formData.text &&
+    formData.text.length >= 50 &&
+    formData.text.length < 300 &&
+    formData.rating;
 
   const onRatingInput = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, rating: +e.target.value });
@@ -167,9 +173,7 @@ export const ReviewForm: FC<ReviewFormProps> = ({
           className="reviews__submit form__submit button"
           type="submit"
           onClick={onSubmitButtonClick}
-          disabled={
-            !formData.text || !formData.rating || formData.text.length < 50
-          }
+          disabled={!isSubmitAllowed}
         >
           Submit
         </button>
