@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import { Link } from 'react-router-dom';
 
 import type { OfferListItem, SixCities } from 'entities';
-import { AddToBookmarksButton } from 'features';
+import { AddToFavouritesButton } from 'features';
 import { useGetFavouritesQuery } from 'features/AddToFavourites';
 import { capitalize } from 'shared/lib';
 import { Rating, Spinner } from 'shared/ui';
@@ -40,7 +40,6 @@ export const Favourites: FC = () => {
 
   data.forEach((offer) => {
     const city = offer.city?.name as SixCities;
-    delete offer.city;
 
     if (city in items) {
       items[city].push(offer);
@@ -102,10 +101,9 @@ export const Favourites: FC = () => {
                                 &#47;&nbsp;night
                               </span>
                             </div>
-                            <AddToBookmarksButton
+                            <AddToFavouritesButton
                               className="place-card"
-                              checked={offer.isFavourite}
-                              onClick={() => {}}
+                              offer={offer}
                             />
                           </div>
                           <Rating

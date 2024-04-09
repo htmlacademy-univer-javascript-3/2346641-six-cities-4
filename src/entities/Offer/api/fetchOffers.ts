@@ -6,9 +6,15 @@ import { SixCities } from 'entities';
 import { BASE_URL } from 'shared/const';
 import { HttpService } from 'shared/services';
 
-export const fetchOffers = createAsyncThunk<OffersState, void>(
+type ReturnType = {
+  offers: OffersState;
+  favourites: string[];
+};
+
+export const fetchOffers = createAsyncThunk<ReturnType, void>(
   '/fetch-offers',
   async () => {
+    const favourites: string[] = [];
     const result: OffersState = {
       Paris: [],
       Cologne: [],
@@ -26,9 +32,14 @@ export const fetchOffers = createAsyncThunk<OffersState, void>(
       const city = offer.city?.name as SixCities;
       delete offer.city;
 
+      if (offer.isFavorite) {
+        favourites.push(offer.id);
+      }
+      delete offer.isFavorite;
+
       result[city].push(offer);
     });
 
-    return result;
+    return { offers: result, favourites: favourites };
   }
 );

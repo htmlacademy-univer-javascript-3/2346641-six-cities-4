@@ -13,6 +13,7 @@ export const App = () => {
 
   useEffect(() => {
     const token = TokenService.get();
+
     if (token) {
       // Try to login immediately if found token in localStorage
       login()
