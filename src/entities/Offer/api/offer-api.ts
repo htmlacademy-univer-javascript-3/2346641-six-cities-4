@@ -1,6 +1,8 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
-import { HttpService } from 'shared/services';
+
 import type { ExtendedOffer, OfferListItem } from '../model/types';
+
+import { HttpService } from 'shared/services';
 
 export const OfferAPI = createApi({
   reducerPath: 'api/offer',

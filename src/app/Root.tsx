@@ -4,8 +4,8 @@ import { Provider } from 'react-redux';
 import { Router } from './router';
 import { store } from './store/store';
 
-import { fetchOffers } from 'entities/Offer';
-import { useLazyGetUserInfoQuery } from 'features/Auth';
+import { fetchOffers } from 'entities/offer';
+import { useLazyGetUserInfoQuery } from 'features/auth';
 import { TokenService } from 'shared/services';
 
 export const App = () => {
@@ -15,7 +15,8 @@ export const App = () => {
     const token = TokenService.get();
 
     if (token) {
-      // Try to login immediately if found token in localStorage
+      // Try to login immediately if found token in localStorage,
+      // in this case fetched offers are different
       login()
         .unwrap()
         .finally(() => {

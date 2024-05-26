@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import type { OfferListItem, SixCities } from 'entities';
 import { AddToFavouritesButton } from 'features';
-import { useGetFavouritesQuery } from 'features/AddToFavourites';
+import { useGetFavouritesQuery } from 'features/add-to-favourites';
 import { capitalize } from 'shared/lib';
 import { Rating, Spinner } from 'shared/ui';
 import { EmptyFavourites, FavouritesFooter, Header } from 'widgets';

@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 
 import { OfferGallery } from 'entities';
-import { useGetNearbyOffersQuery, useGetOfferByIdQuery } from 'entities/Offer';
+import { useGetNearbyOffersQuery, useGetOfferByIdQuery } from 'entities/offer';
 import type { ServerError } from 'shared/types';
 import { Spinner } from 'shared/ui';
 import {

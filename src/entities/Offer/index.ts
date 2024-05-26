@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { offersActions } from './model/slice';
 
-export { fetchOffers } from './api/fetchOffers';
+export { fetchOffers } from './api/fetch-offers';
 export * from './api/offer-api';
 export * from './model/slice';
 export * from './model/types';

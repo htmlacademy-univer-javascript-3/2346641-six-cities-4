@@ -5,7 +5,7 @@ import {
   createBrowserRouter,
 } from 'react-router-dom';
 
-import { ProtectedRoute } from './ProtectedRoute';
+import { ProtectedRoute } from './protected-route';
 
 import {
   FavouritesPage,

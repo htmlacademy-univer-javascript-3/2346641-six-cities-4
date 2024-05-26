@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
-import { fetchOffers } from '../api/fetchOffers';
+import { fetchOffers } from '../api/fetch-offers';
 import type { BaseOffer, OffersState } from './types';
 
 type State = {

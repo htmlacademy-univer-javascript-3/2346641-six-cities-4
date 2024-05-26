@@ -1,7 +1,7 @@
 import { memo } from 'react';
 
-import { NavLoggedIn } from 'features/Auth/ui/NavLoggedIn';
-import { NavLoggedOff } from 'features/Auth/ui/NavLoggedOff';
+import { NavLoggedIn } from 'features/auth/ui/nav-logged-in';
+import { NavLoggedOff } from 'features/auth/ui/nav-logged-off';
 import { useTypedSelector } from 'shared/hooks';
 import { Logo } from 'shared/ui';
 
