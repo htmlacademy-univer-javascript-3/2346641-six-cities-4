@@ -1,2 +1,2 @@
-export { HttpService } from './HttpService';
-export { TokenService } from './TokenService';
+export { HttpService } from './http-service';
+export { TokenService } from './token-service';

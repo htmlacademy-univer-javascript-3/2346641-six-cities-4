@@ -1,2 +1,2 @@
-export { useMap } from './useMap';
-export { useTypedSelector } from './useTypedSelector';
+export { useMap } from './use-map';
+export { useTypedSelector } from './use-typed-selector';

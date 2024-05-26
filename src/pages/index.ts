@@ -1,5 +1,5 @@
-export { Main as MainPage } from './Main/Main';
-export { Login as LoginPage } from './Login/Login';
-export { Favourites as FavouritesPage } from './Favourites/Favourites';
-export { Offer as OfferPage } from './Offer/Offer';
-export { NotFound as NotFoundPage } from './NotFound/NotFound';
+export { Main as MainPage } from './main/main';
+export { Login as LoginPage } from './login/login';
+export { Favourites as FavouritesPage } from './favourites/favourites';
+export { Offer as OfferPage } from './offer/offer';
+export { NotFound as NotFoundPage } from './not-found/not-found';

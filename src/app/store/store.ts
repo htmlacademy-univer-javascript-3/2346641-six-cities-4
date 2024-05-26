@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import { cityReducer } from 'entities/City';
-import { CommentAPI } from 'entities/Comment';
-import { OfferAPI, offersReducer } from 'entities/Offer';
-import { FavouritesAPI } from 'features/AddToFavourites';
-import { AuthAPI, authReducer } from 'features/Auth';
-import { offerSortReducer } from 'features/SortOffers';
+import { cityReducer } from 'entities/city';
+import { CommentAPI } from 'entities/comment';
+import { OfferAPI, offersReducer } from 'entities/offer';
+import { FavouritesAPI } from 'features/add-to-favourites';
+import { AuthAPI, authReducer } from 'features/auth';
+import { offerSortReducer } from 'features/sort-offers';
 import { HttpService } from 'shared/services';
 
 HttpService.configure();

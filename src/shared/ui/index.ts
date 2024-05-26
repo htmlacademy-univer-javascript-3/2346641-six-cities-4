@@ -1,8 +1,8 @@
-export { Card } from './Card/Card';
-export { Comment } from './Comment/Comment';
-export { Gallery } from './Gallery/Gallery';
-export { Icon } from './Icon/Icon';
-export { Logo } from './Logo/Logo';
+export { Card } from './card/card';
+export { Comment } from './comment/comment';
+export { Gallery } from './gallery/gallery';
+export { Icon } from './icon/icon';
+export { Logo } from './logo/logo';
 
-export { Rating } from './Rating/Rating';
-export { Spinner } from './Spinner/Spinner';
+export { Rating } from './rating/rating';
+export { Spinner } from './spinner/spinner';

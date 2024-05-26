@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 
 import { OfferGallery } from 'entities';
-import { useGetNearbyOffersQuery, useGetOfferByIdQuery } from 'entities/Offer';
+import { useGetNearbyOffersQuery, useGetOfferByIdQuery } from 'entities/offer';
 import type { ServerError } from 'shared/types';
 import { Spinner } from 'shared/ui';
 import {
@@ -50,9 +50,11 @@ export const Offer: FC = () => {
                 <OfferReviews offerId={offer.id} />
               </div>
             </div>
-            {nearby && <OfferMap offer={offer} nearPlaces={nearby} />}
+            {nearby && (
+              <OfferMap offer={offer} nearPlaces={nearby.slice(0, 3)} />
+            )}
           </section>
-          {nearby && <NearPlaces nearPlaces={nearby} />}
+          {nearby && <NearPlaces nearPlaces={nearby.slice(0, 3)} />}
         </>
       </main>
     </div>
