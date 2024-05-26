@@ -10,6 +10,7 @@ export const Main: FC = () => {
   const [selectedPoint, setSelectedPoint] = useState<Point | undefined>();
   const currentCity = useTypedSelector((state) => state.city);
   const offersState = useTypedSelector((state) => state.offers);
+
   const offers = offersState.offers[currentCity.name];
   const isLoading = offersState.status === 'loading';
 
@@ -35,10 +36,21 @@ export const Main: FC = () => {
   if (isLoading) {
     return (
       <div className="page page--gray page--main">
+        <Header />
         <main className="index">
           <CityTabs />
           <div className="cities">
-            <Spinner />
+            <div
+              style={{
+                width: '100%',
+                height: 'calc(100vh - 186px)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <Spinner />
+            </div>
           </div>
         </main>
       </div>

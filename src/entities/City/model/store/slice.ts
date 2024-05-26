@@ -14,6 +14,11 @@ const citySlice = createSlice({
       Object.assign(state, action.payload);
       return state;
     },
+    setCityByName: (state, action: PayloadAction<string>) => {
+      const target = CITIES.find((city) => city.name === action.payload);
+      Object.assign(state, target);
+      return state;
+    },
   },
 });
 

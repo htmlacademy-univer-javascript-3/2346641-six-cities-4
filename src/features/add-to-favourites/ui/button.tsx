@@ -11,9 +11,10 @@ import { Icon, Spinner } from 'shared/ui';
 type ButtonProps = {
   offer: BaseOffer;
   className?: string;
+  onClick?: VoidFunction;
 };
 
-export const Button: FC<ButtonProps> = ({ offer, className }) => {
+export const Button: FC<ButtonProps> = ({ offer, className, onClick }) => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { setFavourite } = useOffersActions();
@@ -35,6 +36,7 @@ export const Button: FC<ButtonProps> = ({ offer, className }) => {
       })
       .finally(() => {
         setIsLoading(false);
+        onClick && onClick();
       });
   };
 

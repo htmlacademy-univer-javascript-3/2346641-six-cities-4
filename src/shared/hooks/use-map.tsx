@@ -13,7 +13,7 @@ import { MAP_ATTRIBUTION, MAP_CDN_URL, MARKER_BASE_URL } from 'shared/const';
 import type { Location } from 'shared/types';
 
 const MARKER_URL_DEFAULT = MARKER_BASE_URL + '/pin.svg';
-const MARKER_URL_CURRENT = MARKER_BASE_URL + '/main-pin.svg';
+const MARKER_URL_CURRENT = MARKER_BASE_URL + '/pin-active.svg';
 const MARKER_ICON_SIZE: PointTuple = [40, 40];
 const MARKER_ICON_ANCHOR: PointTuple = [20, 20];
 
