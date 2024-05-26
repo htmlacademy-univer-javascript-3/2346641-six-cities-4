@@ -50,9 +50,11 @@ export const Offer: FC = () => {
                 <OfferReviews offerId={offer.id} />
               </div>
             </div>
-            {nearby && <OfferMap offer={offer} nearPlaces={nearby} />}
+            {nearby && (
+              <OfferMap offer={offer} nearPlaces={nearby.slice(0, 3)} />
+            )}
           </section>
-          {nearby && <NearPlaces nearPlaces={nearby} />}
+          {nearby && <NearPlaces nearPlaces={nearby.slice(0, 3)} />}
         </>
       </main>
     </div>

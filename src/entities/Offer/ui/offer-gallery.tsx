@@ -9,5 +9,5 @@ type OfferGalleryProps = {
 };
 
 export const OfferGallery: FC<OfferGalleryProps> = ({ offer }) => {
-  return <Gallery images={offer.images} />;
+  return <Gallery images={offer.images.slice(0, 6)} />;
 };

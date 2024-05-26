@@ -32,7 +32,7 @@ export const OfferReviews: FC<OfferReviewsProps> = ({ offerId }) => {
       </h2>
       {data.length > 0 && (
         <ul className="reviews__list">
-          {data.map((review) => (
+          {data.slice(0, 10).map((review) => (
             <ReviewComment key={review.id} review={review} />
           ))}
         </ul>

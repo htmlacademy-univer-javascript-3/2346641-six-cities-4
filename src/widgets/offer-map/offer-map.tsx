@@ -10,11 +10,17 @@ type OfferMapProps = {
 };
 
 export const OfferMap: FC<OfferMapProps> = ({ offer, nearPlaces }) => {
-  const points: Point[] = nearPlaces.map((nearPlace) => ({
-    id: nearPlace.id,
-    latitude: nearPlace.location.latitude,
-    longitude: nearPlace.location.longitude,
-  }));
+  const points: Point[] = nearPlaces
+    .map((nearPlace) => ({
+      id: nearPlace.id,
+      latitude: nearPlace.location.latitude,
+      longitude: nearPlace.location.longitude,
+    }))
+    .concat({
+      id: offer.id,
+      latitude: offer.location.latitude,
+      longitude: offer.location.longitude,
+    });
 
   const mapRef = useRef(null);
 
