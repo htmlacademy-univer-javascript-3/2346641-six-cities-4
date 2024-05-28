@@ -13,6 +13,7 @@ import {
   OfferMap,
   OfferReviews,
 } from 'widgets';
+import { PAGINATION } from 'shared/const';
 
 export const Offer: FC = () => {
   const { id } = useParams();
@@ -51,10 +52,17 @@ export const Offer: FC = () => {
               </div>
             </div>
             {nearby && (
-              <OfferMap offer={offer} nearPlaces={nearby.slice(0, 3)} />
+              <OfferMap
+                offer={offer}
+                nearPlaces={nearby.slice(0, PAGINATION.MAX_NEAR_PLACES)}
+              />
             )}
           </section>
-          {nearby && <NearPlaces nearPlaces={nearby.slice(0, 3)} />}
+          {nearby && (
+            <NearPlaces
+              nearPlaces={nearby.slice(0, PAGINATION.MAX_NEAR_PLACES)}
+            />
+          )}
         </>
       </main>
     </div>
