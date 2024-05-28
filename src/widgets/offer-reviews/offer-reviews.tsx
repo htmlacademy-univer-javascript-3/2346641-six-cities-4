@@ -5,6 +5,7 @@ import { useGetCommentsQuery } from 'entities/comment';
 import { CreateOfferReviewForm } from 'features';
 import { useTypedSelector } from 'shared/hooks';
 import { Spinner } from 'shared/ui';
+import { PAGINATION } from 'shared/const';
 
 type OfferReviewsProps = {
   offerId: string;
@@ -32,7 +33,7 @@ export const OfferReviews: FC<OfferReviewsProps> = ({ offerId }) => {
       </h2>
       {data.length > 0 && (
         <ul className="reviews__list">
-          {data.slice(0, 10).map((review) => (
+          {data.slice(0, PAGINATION.MAX_REVIEWS).map((review) => (
             <ReviewComment key={review.id} review={review} />
           ))}
         </ul>
